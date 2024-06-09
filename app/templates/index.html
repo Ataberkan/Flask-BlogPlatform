@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        <h1>Blog Posts</h1>
+        <a href="{{ url_for('routes.new_post') }}">Create New Post</a>
+        {% for post in posts %}
+            <div>
+                <h2><a href="{{ url_for('routes.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+                <p>{{ post.content }}</p>
+                <p>By: {{ post.author.username }}</p>
+            </div>
+        {% endfor %}
+    </body>
+</html>
