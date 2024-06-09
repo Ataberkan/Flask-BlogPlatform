@@ -34,5 +34,5 @@ jobs:
 
       - name: Push to Docker Hub
         run: |
-          docker tag flask-blog-platform ${{ secrets.DOCKER_USERNAME }}/flask-blog-platform:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/flask-blog-platform:latest
+          docker tag flask-blog-platform ataberkan/flask-blog-platform:latest
+          docker push ataberkan/flask-blog-platform:latest
