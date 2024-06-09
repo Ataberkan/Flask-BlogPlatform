@@ -17,7 +17,16 @@ def create_app():
     migrate.init_app(app, db)
     login_manager.init_app(app)
 
-    from . import routes, models
+    with app.app_context():
+        from . import routes
+        from .models import User  # Import models here to avoid circular import
+        db.create_all()
+
     app.register_blueprint(routes.bp)
 
     return app
+
+@login_manager.user_loader
+def load_user(user_id):
+    from .models import User
+    return User.query.get(int(user_id))
